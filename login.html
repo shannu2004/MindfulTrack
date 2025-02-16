@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <base href="/Frontend/index.html">
+    <title>MindfulTrack - Login</title>
+    <style>
+        /* Existing styles remain unchanged */
+        :root {
+            --primary: #6b48ff;
+            --secondary: #ff6b6b;
+            --accent: #4ecdc4;
+            --background: #f7f9fc;
+            --text: #2d3436;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        body {
+            background: var(--background);
+            color: var(--text);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(45deg, rgba(107, 72, 255, 0.1), rgba(255, 107, 107, 0.1));
+        }
+        .login-container {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 400px;
+            position: relative;
+            overflow: hidden;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 2rem;
+        }
+        .logo svg {
+            width: 40px;
+            height: 40px;
+        }
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text);
+            font-weight: 500;
+        }
+        .form-input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e1e1e1;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        .form-input:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(107, 72, 255, 0.1);
+        }
+        .btn {
+            width: 100%;
+            padding: 12px;
+            border-radius: 10px;
+            border: none;
+            background: var(--primary);
+            color: white;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(107, 72, 255, 0.2);
+        }
+        .links {
+            margin-top: 1.5rem;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+        .links a {
+            color: var(--primary);
+            text-decoration: none;
+            margin: 0 10px;
+            transition: all 0.3s ease;
+        }
+        .links a:hover {
+            text-decoration: underline;
+        }
+        .decoration {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            opacity: 0.1;
+            z-index: 0;
+        }
+        .top-right {
+            top: -100px;
+            right: -100px;
+        }
+        .bottom-left {
+            bottom: -100px;
+            left: -100px;
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        .floating-icon {
+            animation: float 3s ease-in-out infinite;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="login-container">
+    <div class="decoration top-right"></div>
+    <div class="decoration bottom-left"></div>
+    
+    <div class="logo">
+        <svg viewBox="0 0 50 50" class="floating-icon">
+            <circle cx="25" cy="25" r="20" fill="var(--primary)" />
+            <circle cx="18" cy="20" r="3" fill="white"/>
+            <circle cx="32" cy="20" r="3" fill="white"/>
+            <path d="M15 28 Q25 38 35 28" stroke="white" fill="none" stroke-width="3"/>
+        </svg>
+        <h2>MindfulTrack</h2>
+    </div>
+
+    <form id="loginForm">
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" class="form-input" required placeholder="Enter your email">
+        </div>
+        
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" class="form-input" required placeholder="Enter your password">
+        </div>
+
+        <button type="submit" class="btn">Login</button>
+    </form>
+
+    <div class="links">
+        <a href="https://mindfultrack.health/forgot-password">Forgot Password?</a>
+        <span>•</span>
+        <a href="/Frontend/register.html">Create Account</a>
+    </div>
+</div>
+
+<script>
+    document.getElementById('loginForm').addEventListener('submit', async function (e) {
+        e.preventDefault();
+
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+
+        try {
+            const response = await fetch('http://localhost:5000/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email, password }),
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                alert('Login successful!');
+                // Redirect to index.html (dashboard page)
+                window.location.href = '/Frontend/index.html';
+            } else {
+                alert(data.message || 'Login failed');
+            }
+        } catch (err) {
+            console.error(err);
+            alert('An error occurred during login');
+        }
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <base href="/Frontend/index.html">
+    <title>MindfulTrack - Register</title>
+    <style>
+        :root {
+            --primary: #6b48ff;
+            --secondary: #ff6b6b;
+            --accent: #4ecdc4;
+            --background: #f7f9fc;
+            --text: #2d3436;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: var(--background);
+            color: var(--text);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(45deg, rgba(107, 72, 255, 0.1), rgba(255, 107, 107, 0.1));
+        }
+
+        .register-container {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 500px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 2rem;
+        }
+
+        .logo svg {
+            width: 40px;
+            height: 40px;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e1e1e1;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(107, 72, 255, 0.1);
+        }
+
+        .btn {
+            width: 100%;
+            padding: 12px;
+            border-radius: 10px;
+            border: none;
+            background: var(--primary);
+            color: white;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(107, 72, 255, 0.2);
+        }
+
+        .links {
+            margin-top: 1.5rem;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        .links a {
+            color: var(--primary);
+            text-decoration: none;
+            margin: 0 10px;
+            transition: all 0.3s ease;
+        }
+
+        .links a:hover {
+            text-decoration: underline;
+        }
+
+        .decoration {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            opacity: 0.1;
+            z-index: 0;
+        }
+
+        .top-right {
+            top: -100px;
+            right: -100px;
+        }
+
+        .bottom-left {
+            bottom: -100px;
+            left: -100px;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .floating-icon {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .terms {
+            font-size: 0.85rem;
+            margin-top: 1rem;
+            color: #666;
+            text-align: center;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="register-container">
+    <div class="decoration top-right"></div>
+    <div class="decoration bottom-left"></div>
+    
+    <div class="logo">
+        <svg viewBox="0 0 50 50" class="floating-icon">
+            <circle cx="25" cy="25" r="20" fill="var(--primary)" />
+            <circle cx="18" cy="20" r="3" fill="white"/>
+            <circle cx="32" cy="20" r="3" fill="white"/>
+            <path d="M15 28 Q25 38 35 28" stroke="white" fill="none" stroke-width="3"/>
+        </svg>
+        <h2>Join MindfulTrack</h2>
+    </div>
+
+    <form id="registerForm">
+        <div class="form-row">
+            <div class="form-group">
+                <label for="firstName">First Name</label>
+                <input type="text" id="firstName" class="form-input" required placeholder="Enter your first name">
+            </div>
+            
+            <div class="form-group">
+                <label for="lastName">Last Name</label>
+                <input type="text" id="lastName" class="form-input" required placeholder="Enter your last name">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" class="form-input" required placeholder="Enter your email">
+        </div>
+        
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" class="form-input" required placeholder="Create a password">
+        </div>
+
+        <div class="form-group">
+            <label for="confirmPassword">Confirm Password</label>
+            <input type="password" id="confirmPassword" class="form-input" required placeholder="Confirm your password">
+        </div>
+
+        <button type="submit" class="btn">Create Account</button>
+
+        <p class="terms">
+            By creating an account, you agree to our 
+            <a href="/Frontend/terms.html">Terms of Service</a> and 
+            <a href="/Frontend/terms.html">Privacy Policy</a>
+        </p>
+    </form>
+
+    <div class="links">
+        <span>Already have an account?</span>
+        <a href="/Frontend/login.html">Login</a>
+    </div>
+</div>
+
+<script>
+    document.getElementById('registerForm').addEventListener('submit', async function (e) {
+        e.preventDefault();
+
+        const firstName = document.getElementById('firstName').value;
+        const lastName = document.getElementById('lastName').value;
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+        const confirmPassword = document.getElementById('confirmPassword').value;
+
+        if (password !== confirmPassword) {
+            alert("Passwords don't match!");
+            return;
+        }
+
+        try {
+            const response = await fetch('http://localhost:5000/register', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ firstName, lastName, email, password }),
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                alert('Registration successful! Please log in.');
+                window.location.href = '/Frontend/login.html';
+            } else {
+                alert(data.message || 'Registration failed');
+            }
+        } catch (err) {
+            console.error(err);
+            alert('An error occurred during registration');
+        }
+    });
+</script>
+
+</body>
+</html>

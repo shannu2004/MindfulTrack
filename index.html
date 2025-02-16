@@ -1,0 +1,476 @@
+<html><head><base href="/Frontend/index.html">
+    <title>MindfulTrack - Your Mental Health Companion</title>
+    <style>
+    :root {
+        --primary: #6b48ff;
+        --secondary: #ff6b6b;
+        --accent: #4ecdc4;
+        --background: #f7f9fc;
+        --text: #2d3436;
+    }
+    
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+    }
+    
+    body {
+        background: var(--background);
+        color: var(--text);
+    }
+    
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+    
+    nav {
+        background: white;
+        box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+        padding: 1rem 0;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+    }
+    
+    .nav-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    
+    .logo svg {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .nav-links {
+        display: flex;
+        gap: 2rem;
+    }
+    
+    .btn {
+        padding: 10px 25px;
+        border-radius: 25px;
+        border: none;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-weight: 500;
+    }
+    
+    .btn-primary {
+        background: var(--primary);
+        color: white;
+    }
+    
+    .btn-secondary {
+        background: transparent;
+        border: 2px solid var(--primary);
+        color: var(--primary);
+    }
+    
+    .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(107, 72, 255, 0.2);
+    }
+    
+    .hero {
+        margin-top: 80px;
+        padding: 100px 0;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .hero-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 50px;
+        align-items: center;
+    }
+    
+    .hero-text h1 {
+        font-size: 3.5rem;
+        margin-bottom: 1.5rem;
+        background: linear-gradient(45deg, var(--primary), var(--secondary));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+    
+    .hero-text p {
+        font-size: 1.2rem;
+        line-height: 1.6;
+        color: #666;
+        margin-bottom: 2rem;
+    }
+    
+    .features {
+        padding: 100px 0;
+        background: white;
+    }
+    
+    .features-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+    }
+    
+    .feature-card {
+        padding: 2rem;
+        border-radius: 15px;
+        background: white;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        transition: all 0.3s ease;
+    }
+    
+    .feature-card:hover {
+        transform: translateY(-10px);
+    }
+    
+    @keyframes float {
+        0% { transform: translateY(0px); }
+        50% { transform: translateY(-20px); }
+        100% { transform: translateY(0px); }
+    }
+    
+    .floating-shapes {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        z-index: -1;
+    }
+    
+.about-section {
+    padding: 80px 0;
+    background: linear-gradient(45deg, rgba(107, 72, 255, 0.05), rgba(255, 107, 107, 0.05));
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+}
+
+.about-text h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--primary);
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 2rem;
+}
+
+.stat-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.stat-number {
+    font-size: 2rem;
+    color: var(--primary);
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+footer {
+    background: #2d3436;
+    color: white;
+    padding: 60px 0 20px;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.footer-section h3 {
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+}
+
+.footer-links {
+    list-style: none;
+}
+
+.footer-links li {
+    margin-bottom: 1rem;
+}
+
+.footer-links a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: var(--accent);
+}
+
+.social-links {
+    display: flex;
+    gap: 15px;
+    margin-top: 1rem;
+}
+
+.social-links svg {
+    width: 24px;
+    height: 24px;
+    fill: white;
+    transition: fill 0.3s ease;
+}
+
+.social-links svg:hover {
+    fill: var(--accent);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+}
+    
+    .shape {
+        position: absolute;
+        animation: float 6s ease-in-out infinite;
+    }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    </head>
+    <body>
+    
+    <nav>
+        <div class="container nav-content">
+            <div class="logo">
+                <svg viewBox="0 0 50 50">
+                    <circle cx="25" cy="25" r="20" fill="var(--primary)" />
+                    <circle cx="18" cy="20" r="3" fill="white"/>
+                    <circle cx="32" cy="20" r="3" fill="white"/>
+                    <path d="M15 28 Q25 38 35 28" stroke="white" fill="none" stroke-width="3"/>
+                </svg>
+                <h2>MindfulTrack</h2>
+            </div>
+            <div class="nav-links">
+                <a href="/Frontend/about.html" class="btn btn-secondary">About</a>
+                <a href="/Frontend/login.html" class="btn btn-primary" target="_blank">Login</a>
+                <a href="/Frontend/register.html" class="btn btn-secondary" target="_blank">Register</a>
+                <a href="/Frontend/bot.html" class="btn btn-secondary">Medimate</a>
+            </div>
+        </div>
+        
+    </nav>
+    
+    <section class="hero">
+        <div class="container hero-content">
+            <div class="hero-text">
+                <h1>Track Your Mental Wellbeing Journey</h1>
+                <p>MindfulTrack helps you understand and improve your mental health through daily mood tracking, personalized insights, and professional guidance.</p>
+                <a href="/Frontend/register.html" class="btn btn-primary">Start Your Journey</a>
+            </div>
+            <div class="hero-visual">
+                <svg viewBox="0 0 200 200" width="100%" height="100%">
+                    <defs>
+                        <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:var(--primary);stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:var(--secondary);stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                    <circle cx="100" cy="100" r="80" fill="url(#grad1)" opacity="0.2">
+                        <animate attributeName="r" values="80;85;80" dur="3s" repeatCount="indefinite"/>
+                    </circle>
+                    <circle cx="70" cy="80" r="8" fill="var(--primary)">
+                        <animate attributeName="cy" values="80;82;80" dur="2s" repeatCount="indefinite"/>
+                    </circle>
+                    <circle cx="130" cy="80" r="8" fill="var(--primary)">
+                        <animate attributeName="cy" values="80;82;80" dur="2s" repeatCount="indefinite"/>
+                    </circle>
+                    <path d="M60,103 Q100,143 140,103" stroke="var(--primary)" stroke-width="5" fill="none">
+                        <animate attributeName="d" 
+                            values="M60,103 Q100,143 140,103;M60,103 Q100,63 140,103;M60,103 Q100,143 140,103" 
+                            dur="4s" repeatCount="indefinite"/>
+                    </path>
+                </svg>
+            </div>
+        </div>
+        <div class="floating-shapes">
+            <svg class="shape" style="top:20%; left:10%" width="50" height="50">
+                <circle cx="25" cy="25" r="20" fill="var(--accent)" opacity="0.2"/>
+            </svg>
+            <svg class="shape" style="top:60%; right:15%" width="40" height="40">
+                <rect width="30" height="30" fill="var(--secondary)" opacity="0.2"/>
+            </svg>
+        </div>
+    </section>
+    
+    <section class="features">
+        <div class="container">
+            <div class="features-grid">
+                <div class="feature-card">
+                    <svg viewBox="0 0 50 50" width="50" height="50">
+                        <circle cx="25" cy="25" r="20" fill="var(--primary)" opacity="0.2"/>
+                        <path d="M15,25 L22,32 L35,18" stroke="var(--primary)" stroke-width="3" fill="none"/>
+                    </svg>
+                    <h3>Daily Mood Tracking</h3>
+                    <p>Log your daily emotions and track patterns over time</p>
+                </div>
+                <div class="feature-card">
+                    <svg viewBox="0 0 50 50" width="50" height="50">
+                        <circle cx="25" cy="25" r="20" fill="var(--secondary)" opacity="0.2"/>
+                        <path d="M25,15 L25,35 M15,25 L35,25" stroke="var(--secondary)" stroke-width="3"/>
+                    </svg>
+                    <h3>Personalized Insights</h3>
+                    <p>Get AI-powered analysis of your emotional patterns</p>
+                </div>
+                <div class="feature-card">
+                    <svg viewBox="0 0 50 50" width="50" height="50">
+                        <circle cx="25" cy="25" r="20" fill="var(--accent)" opacity="0.2"/>
+                        <circle cx="20" cy="20" r="2" fill="var(--accent)"/>
+                        <circle cx="30" cy="20" r="2" fill="var(--accent)"/>
+                        <path d="M20,23 Q25,33 30,23" stroke="var(--accent)" stroke-width="3" fill="none"/>
+                    </svg>
+                    <h3>Professional Support</h3>
+                    <p>Connect with mental health professionals when needed</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="about-section">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-text">
+                    <h2>Why Choose MindfulTrack?</h2>
+                    <p>In today's fast-paced world, maintaining mental wellness is more important than ever. MindfulTrack provides you with the tools and support needed to understand and improve your mental health journey.</p>
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-number">50K+</div>
+                            <div>Active Users</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">92%</div>
+                            <div>User Satisfaction</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">24/7</div>
+                            <div>Support Available</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-visual">
+                    <svg viewBox="0 0 200 200" width="100%" height="100%">
+                        <defs>
+                            <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:var(--accent);stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:var(--primary);stop-opacity:1" />
+                            </linearGradient>
+                        </defs>
+                        <path d="M20,100 Q100,20 180,100 Q100,180 20,100" fill="url(#grad2)" opacity="0.2">
+                            <animate attributeName="d" 
+                                values="M20,100 Q100,20 180,100 Q100,180 20,100;
+                                       M20,100 Q100,180 180,100 Q100,20 20,100;
+                                       M20,100 Q100,20 180,100 Q100,180 20,100"
+                                dur="10s" repeatCount="indefinite"/>
+                        </path>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="logo">
+                        <svg viewBox="0 0 50 50" width="40" height="40">
+                            <circle cx="25" cy="25" r="20" fill="var(--accent)" />
+                            <circle cx="18" cy="20" r="3" fill="white"/>
+                            <circle cx="32" cy="20" r="3" fill="white"/>
+                            <path d="M15 28 Q25 38 35 28" stroke="white" fill="none" stroke-width="3"/>
+                        </svg>
+                        <h3>MindfulTrack</h3>
+                    </div>
+                    <p>Your trusted companion for mental wellness journey. Track, understand, and improve your mental health with our comprehensive tools and support.</p>
+                    <div class="social-links">
+                        <a href="https://twitter.com/mindfultrack"><svg viewBox="0 0 24 24"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg></a>
+                        <a href="https://facebook.com/mindfultrack"><svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a>
+                        <a href="https://instagram.com/mindfultrack"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="https://mindfultrack.health/features">Features</a></li>
+                        <li><a href="https://mindfultrack.health/pricing">Pricing</a></li>
+                        <li><a href="/Frontend/about.html">About Us</a></li>
+                        <li><a href="https://mindfultrack.health/contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Resources</h3>
+                    <ul class="footer-links">
+                        <li><a href="/Frontend/terms.html">Blog</a></li>
+                        <li><a href="/Frontend/terms.html">Guides</a></li>
+                        <li><a href="/Frontend/terms.html">FAQ</a></li>
+                        <li><a href="/Frontend/terms.html">Support</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Legal</h3>
+                    <ul class="footer-links">
+                        <li><a href="/Frontend/terms.html">Privacy Policy</a></li>
+                        <li><a href="/Frontend/terms.html">Terms of Service</a></li>
+                        <li><a href="/Frontend/terms.html">Cookie Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 MindfulTrack. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    
+    <script>
+    document.querySelectorAll('.btn').forEach(button => {
+        button.addEventListener('mouseover', function() {
+            this.style.transform = 'translateY(-2px)';
+        });
+        
+        button.addEventListener('mouseout', function() {
+            this.style.transform = 'translateY(0)';
+        });
+    });
+    
+    // Add smooth scrolling
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
+    </script>
+    
+    </body>
+    </html>
